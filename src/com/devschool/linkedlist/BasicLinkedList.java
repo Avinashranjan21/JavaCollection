@@ -30,9 +30,43 @@ public class BasicLinkedList<X> {
         nodeCount++;
     }
 
+    public void insert(X item, int position) {
+        if (position > size()) {
+            throw new IllegalStateException("The linked list is smaller tha the position you want to insert");
+        }
+
+        Node currentNode = first;
+        for (int i = 0; i < position && currentNode != null; i++) {
+            currentNode = currentNode.getNextNode();
+        }
+
+        Node newNode = new Node(item);
+        Node nextNode = currentNode.getNextNode();
+        currentNode.setNextNode(newNode);
+        newNode.setNextNode(nextNode);
+        nodeCount++;
+    }
+
+    public X removeAt(int position) {
+        if (first == null) {
+            throw new IllegalStateException("The linkedList is empty and there is not item to remove");
+        }
+        Node currentNode = first;
+        Node previousNode = first;
+
+        for (int i = 0; i < position && currentNode != null; i++) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNextNode();
+        }
+        X nodeItem = currentNode.getNodeItem();
+        previousNode.setNextNode(currentNode.getNextNode());
+        nodeCount--;
+        return nodeItem;
+    }
+
     public X remove() {
         if (first == null) {
-        throw  new IllegalStateException("The linked list is empty and there is no item in the list");
+            throw new IllegalStateException("The linked list is empty and there is no item in the list");
         }
         X nodeItem = first.getNodeItem();
         first = first.getNextNode();
