@@ -74,6 +74,34 @@ public class BasicLinkedList<X> {
         return nodeItem;
     }
 
+    public X get(int position) {
+        if (first == null) {
+            throw new IllegalStateException("The linkedList is empty and there is no item to get");
+        }
+        Node currentNode = first;
+        for (int i = 0; i < size() && currentNode != null; i++) {
+            if (i == position) {
+                return currentNode.getNodeItem();
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        return null;
+    }
+
+    public int find(X item) {
+        if (first == null) {
+            throw new IllegalStateException("The linkedList is empty and there is no item to get");
+        }
+        Node currentNode = first;
+        for (int i = 0; i < size() && currentNode != null; i++) {
+            if (currentNode.getNodeItem().equals(item)) {
+                return i;
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        return -1;
+    }
+
     public int size() {
         return nodeCount;
     }
