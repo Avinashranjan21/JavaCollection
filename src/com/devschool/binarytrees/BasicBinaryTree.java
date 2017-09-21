@@ -1,20 +1,19 @@
 package com.devschool.binarytrees;
 
-import java.util.Comparator;
 
 /**
  * Created by avinash.ranjan on 21/09/17.
  */
-public class BasicBinaryTrees<X extends Comparable<X>> {
+public class BasicBinaryTree<X extends Comparable<X>> {
 
     private Node root;
     private int size;
 
-    public BasicBinaryTrees() {
+    public BasicBinaryTree() {
         this.root = null;
     }
 
-    private int size() {
+    public int size() {
         return size;
     }
 
@@ -29,7 +28,7 @@ public class BasicBinaryTrees<X extends Comparable<X>> {
         }
     }
 
-    public boolean contain(X item) {
+    public boolean contains(X item) {
         Node currentNode = getNode(item);
         if (currentNode != null) {
             return true;
